@@ -3,6 +3,9 @@
 <head>
   <title>Angad Singh's Link Shortener</title>
   <style type="text/css">
+    * {
+      font-family: system-ui;
+    }
     input[type="text"] {
       margin-bottom: 10px;
     }
@@ -12,22 +15,20 @@
   </style>
 </head>
 <body>
-  <center>
-    <h1>Angad Singh's Link Shortener</h1>
-    <form>
-      <input type="text" name="short" placeholder="Short URL"><br>
-      <input type="text" name="long" placeholder="Long URL"><br>
-      <button type="Submit">Shorten</button>
-    </form>
-    <table>
-      <% for(let shortlink of shortlinks) { %>
-        <tr>
-          <td><%= shortlink.short %></td>
-          <td><%= shortlink.long %></td>
-          <td><a href="<%= shortlink.delete_url %>">delete</a></td>
-        </tr>
-      <% } %>
-    </table>
-  <center>
+  <h1>Angad Singh's Link Shortener</h1>
+  <form action="/create" method="post">
+    <input type="text" name="short" placeholder="Short URL"><br>
+    <input type="text" name="long" placeholder="Long URL"><br>
+    <button type="submit">Shorten</button>
+  </form>
+  <table>
+    <% for(let shortlink of shortlinks) { %>
+      <tr>
+        <td><%= shortlink.short %></td>
+        <td><%= shortlink.long %></td>
+        <td><a href="<%= shortlink.delete_url %>">delete</a></td>
+      </tr>
+    <% } %>
+  </table>
 </body>
 </html>
