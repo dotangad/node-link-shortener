@@ -1,8 +1,9 @@
+require('dotenv').config()
 const Sequelize = require('sequelize')
 const db = new Sequelize(
-  process.env.DB_NAME || 'shortlinks',
-  process.env.DB_USERNAME || 'username',
-  process.env.DB_PASSWORD || 'password',
+  process.env.DB_NAME,
+  process.env.DB_USER,
+  process.env.DB_PASS,
   {
     dialect: 'mysql',
     host: process.env.DB_HOST || 'localhost',
@@ -29,7 +30,7 @@ module.exports = {
   Shortlink,
   helpers: {
     exists: async short => { 
-      return shortlink await Shortlink.findOne({short})
+      return await Shortlink.findOne({short})
     },
     add: async (short, long) => {
       return (await Shortlink.create({short, long})).dataValues
@@ -38,7 +39,7 @@ module.exports = {
       return await Shortlink.destroy({where: {short}})
     },
     getall: async () => {
-      return await Shortlink.find()
+      return await Shortlink.findAll()
     }
   }
 }
