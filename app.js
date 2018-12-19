@@ -18,6 +18,17 @@ render(app, {
 })
 
 app.use(bodyParser())
+
+router.get('/:short', async ctx => {
+  const shortlink = await db.exists(ctx.params.short)
+
+  if(!short){
+    ctx.body = 'Not Found'
+    return
+  }
+
+  ctx.redirect(shortlink.long)
+})
  
 router.get('/shorten', async ctx => { 
   if(ctx.query.pass != process.env.PASSWORD) {
