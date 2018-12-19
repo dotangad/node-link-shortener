@@ -36,6 +36,9 @@ module.exports = {
     },
     delete: async (short) => {
       return await Shortlink.destroy({where: {short}})
+    },
+    getall: async () => {
+      return await Shortlink.find()
     }
   }
 }

@@ -26,7 +26,7 @@
       <tr>
         <td><%= shortlink.short %></td>
         <td><%= shortlink.long %></td>
-        <td><a href="<%= shortlink.delete_url %>">delete</a></td>
+        <td><a href="delete/<%= shortlink.short %>">delete</a></td>
       </tr>
     <% } %>
   </table>
